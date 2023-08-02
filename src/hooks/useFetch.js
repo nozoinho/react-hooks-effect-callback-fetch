@@ -5,11 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  console.log("useFetch");
 
   const fechData = useCallback(async () => {
     // el useCallback impide la creacion del fetch mas de una vez
@@ -22,7 +19,6 @@ export const useFetch = (url) => {
 
       const data = await res.json();
       setData(data);
-      setError(null);
     } catch (error) {
       //console.log(error.message);
       setError(error.message);
@@ -33,7 +29,7 @@ export const useFetch = (url) => {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect");
+    //console.log("useEffect");
     fechData();
   }, []);
 
